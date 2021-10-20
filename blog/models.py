@@ -9,7 +9,7 @@ class Blog(Base):
     
     id = Column(Integer, primary_key=True,index=True)
     author_id = Column(Integer,ForeignKey('users.id'))
-    author = relationship("users",back_populates="blogs")
+    author = relationship("User",back_populates="blogs")
     title = Column(String)
     body = Column(String)
     
@@ -20,4 +20,4 @@ class User(Base):
     name = Column(String)
     email = Column(String)
     password = Column(String)
-    blogs = relationship('blogs', back_populates='author')
+    blogs = relationship('Blog', back_populates='author')
